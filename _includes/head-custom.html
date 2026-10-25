@@ -1,80 +1,122 @@
 <style>
   .tabs-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
-    margin: 2rem 0 1.5rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 2px solid #dce6f0;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0 1rem;
+    background: #fff;
+    border-bottom: 1px solid #dce6f0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   }
   .tabs-nav button {
-    padding: 0.45rem 0.9rem;
-    border: 1px solid #dce6f0;
-    border-radius: 0.4rem;
-    background: #f3f6fa;
-    color: #159957;
+    padding: 0.9rem 1.1rem 0.75rem;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    background: none;
+    color: #606c71;
     font: inherit;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     cursor: pointer;
   }
-  .tabs-nav button:hover { border-color: #159957; }
+  .tabs-nav button:hover { color: #159957; }
   .tabs-nav button[aria-selected="true"] {
-    background: #159957;
-    border-color: #159957;
-    color: #fff;
+    color: #159957;
+    font-weight: 600;
+    border-bottom-color: #159957;
   }
-  .tab-panel > h2:first-child { margin-top: 0; }
   .tab-panel[hidden] { display: none; }
+  .tab-panel > h1:first-child,
+  .tab-panel > h2:first-child { margin-top: 0; }
 </style>
 <script>
-  // Turns every top-level "##" section of the page into a tab.
+  // Shows the page content as tabs placed right below the header.
+  // Sections ("##") listed in GROUPS share a tab; other sections get their own tab.
+  // Content before the first "##" opens the "Inicio" tab.
   document.addEventListener("DOMContentLoaded", function () {
+    var GROUPS = {
+      "presentacion": "Inicio",
+      "objetivos": "Inicio",
+      "organizacion de los encuentros": "Encuentros",
+      "desarrollo de las actividades": "Encuentros",
+      "requisitos tecnicos y preparacion previa": "Requisitos y cuadernos",
+      "notebooks y recursos practicos": "Requisitos y cuadernos",
+      "modalidad de trabajo y evaluacion formativa": "Trabajo y evaluación",
+      "orientaciones para el trabajo con fuentes y modelos": "Trabajo y evaluación",
+      "resultado esperado": "Trabajo y evaluación",
+      "bibliografia por modulos": "Bibliografía",
+      "a. layout, materialidad y segmentacion": "A. Layout",
+      "b. ocr, errores y critica de fuentes digitalizadas": "B. OCR",
+      "c. entropia lite, desarrollo y critica de herramientas": "C. Herramientas",
+      "d. rag, agentes y consulta asistida": "D. RAG y agentes"
+    };
+    var normalize = function (text) {
+      return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
+    };
+
     var main = document.querySelector("main.main-content");
     if (!main) return;
-    var headings = Array.prototype.filter.call(main.children, function (el) { return el.tagName === "H2"; });
-    if (headings.length < 3) return;
     var footer = main.querySelector("footer.site-footer");
+    var nodes = Array.prototype.filter.call(main.children, function (el) { return el !== footer; });
+    if (nodes.filter(function (el) { return el.tagName === "H2"; }).length < 3) return;
 
-    var nav = document.createElement("div");
-    nav.className = "tabs-nav";
-    nav.setAttribute("role", "tablist");
-    main.insertBefore(nav, headings[0]);
-
-    var tabs = headings.map(function (heading, i) {
-      var panel = document.createElement("section");
-      panel.className = "tab-panel";
-      panel.setAttribute("role", "tabpanel");
-      main.insertBefore(panel, heading);
-      var node = heading;
-      while (node && node !== footer && !(node !== heading && node.tagName === "H2")) {
-        var next = node.nextElementSibling;
-        panel.appendChild(node);
-        node = next;
+    var tabs = [];
+    var byLabel = {};
+    var current = null;
+    nodes.forEach(function (node) {
+      var label = null;
+      if (node.tagName === "H2") label = GROUPS[normalize(node.textContent)] || node.textContent.trim();
+      else if (!current) label = "Inicio";
+      if (label) {
+        if (!byLabel[label]) {
+          var panel = document.createElement("section");
+          panel.className = "tab-panel";
+          panel.setAttribute("role", "tabpanel");
+          byLabel[label] = { label: label, panel: panel };
+          tabs.push(byLabel[label]);
+        }
+        current = byLabel[label];
       }
-      var button = document.createElement("button");
-      button.type = "button";
-      button.setAttribute("role", "tab");
-      button.textContent = heading.textContent;
-      button.addEventListener("click", function () { show(i, true); });
-      nav.appendChild(button);
-      return { id: heading.id, panel: panel, button: button };
+      current.panel.appendChild(node);
     });
 
-    function show(index, updateHash) {
+    var nav = document.createElement("nav");
+    nav.className = "tabs-nav";
+    nav.setAttribute("role", "tablist");
+    var header = document.querySelector("header.page-header");
+    header.parentNode.insertBefore(nav, header.nextSibling);
+    tabs.forEach(function (tab, i) {
+      main.insertBefore(tab.panel, footer);
+      tab.button = document.createElement("button");
+      tab.button.type = "button";
+      tab.button.setAttribute("role", "tab");
+      tab.button.textContent = tab.label;
+      tab.button.addEventListener("click", function () {
+        show(i);
+        var heading = tab.panel.querySelector("h1, h2");
+        history.replaceState(null, "", heading && heading.id ? "#" + heading.id : location.pathname);
+        if (nav.getBoundingClientRect().top <= 0) nav.scrollIntoView();
+      });
+      nav.appendChild(tab.button);
+    });
+
+    function show(index) {
       tabs.forEach(function (tab, i) {
         tab.panel.hidden = i !== index;
         tab.button.setAttribute("aria-selected", String(i === index));
       });
-      if (updateHash && tabs[index].id) history.replaceState(null, "", "#" + tabs[index].id);
     }
 
     function showTarget(hash) {
-      if (!hash) return false;
+      if (!hash || hash.length < 2) return false;
       var target = document.getElementById(decodeURIComponent(hash.slice(1)));
       if (!target) return false;
       for (var i = 0; i < tabs.length; i++) {
         if (tabs[i].panel.contains(target)) {
-          show(i, false);
+          show(i);
           target.scrollIntoView();
           return true;
         }
@@ -87,6 +129,6 @@
       if (link && showTarget(link.getAttribute("href"))) event.preventDefault();
     });
 
-    if (!showTarget(location.hash)) show(0, false);
+    if (!showTarget(location.hash)) show(0);
   });
 </script>
