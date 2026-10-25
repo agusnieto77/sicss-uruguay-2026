@@ -1,3 +1,9 @@
 title: SICSS Uruguay 2026
 description: "Taller: investigación histórica asistida por IA"
 theme: jekyll-theme-cayman
+
+defaults:
+  - scope:
+      path: "README.md"
+    values:
+      title: SICSS Uruguay 2026
