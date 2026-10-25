@@ -1,0 +1,92 @@
+<style>
+  .tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 2rem 0 1.5rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid #dce6f0;
+  }
+  .tabs-nav button {
+    padding: 0.45rem 0.9rem;
+    border: 1px solid #dce6f0;
+    border-radius: 0.4rem;
+    background: #f3f6fa;
+    color: #159957;
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  .tabs-nav button:hover { border-color: #159957; }
+  .tabs-nav button[aria-selected="true"] {
+    background: #159957;
+    border-color: #159957;
+    color: #fff;
+  }
+  .tab-panel > h2:first-child { margin-top: 0; }
+  .tab-panel[hidden] { display: none; }
+</style>
+<script>
+  // Turns every top-level "##" section of the page into a tab.
+  document.addEventListener("DOMContentLoaded", function () {
+    var main = document.querySelector("main.main-content");
+    if (!main) return;
+    var headings = Array.prototype.filter.call(main.children, function (el) { return el.tagName === "H2"; });
+    if (headings.length < 3) return;
+    var footer = main.querySelector("footer.site-footer");
+
+    var nav = document.createElement("div");
+    nav.className = "tabs-nav";
+    nav.setAttribute("role", "tablist");
+    main.insertBefore(nav, headings[0]);
+
+    var tabs = headings.map(function (heading, i) {
+      var panel = document.createElement("section");
+      panel.className = "tab-panel";
+      panel.setAttribute("role", "tabpanel");
+      main.insertBefore(panel, heading);
+      var node = heading;
+      while (node && node !== footer && !(node !== heading && node.tagName === "H2")) {
+        var next = node.nextElementSibling;
+        panel.appendChild(node);
+        node = next;
+      }
+      var button = document.createElement("button");
+      button.type = "button";
+      button.setAttribute("role", "tab");
+      button.textContent = heading.textContent;
+      button.addEventListener("click", function () { show(i, true); });
+      nav.appendChild(button);
+      return { id: heading.id, panel: panel, button: button };
+    });
+
+    function show(index, updateHash) {
+      tabs.forEach(function (tab, i) {
+        tab.panel.hidden = i !== index;
+        tab.button.setAttribute("aria-selected", String(i === index));
+      });
+      if (updateHash && tabs[index].id) history.replaceState(null, "", "#" + tabs[index].id);
+    }
+
+    function showTarget(hash) {
+      if (!hash) return false;
+      var target = document.getElementById(decodeURIComponent(hash.slice(1)));
+      if (!target) return false;
+      for (var i = 0; i < tabs.length; i++) {
+        if (tabs[i].panel.contains(target)) {
+          show(i, false);
+          target.scrollIntoView();
+          return true;
+        }
+      }
+      return false;
+    }
+
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("a[href^='#']");
+      if (link && showTarget(link.getAttribute("href"))) event.preventDefault();
+    });
+
+    if (!showTarget(location.hash)) show(0, false);
+  });
+</script>
