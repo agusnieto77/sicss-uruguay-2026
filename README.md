@@ -1,4 +1,4 @@
-# Taller: del documento histórico a la investigación asistida por IA
+# Taller: investigación histórica asistida por IA
 
 **Segmentación de documentos, reconocimiento de texto y exploración de fuentes con EntropIA Lite**
 
