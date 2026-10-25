@@ -1,0 +1,8 @@
+# Downloaded archive (~6 GB of images) and run logs: regenerate with the scripts, do not commit.
+historial_hojas_uruguay/
+*.log
+__pycache__/
+
+# Notebook outputs and personal images when running the notebooks locally.
+cuadernos/resultados/
+cuadernos/mis_imagenes/
