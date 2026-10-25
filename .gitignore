@@ -9,3 +9,11 @@ cuadernos/mis_imagenes/
 
 # Personal data of participants: never publish.
 Participantes_SICSS.xlsx
+
+# Local working files, not part of the published course.
+.atl/
+README-bk.md
+Cronograma-Cronograma-tentativo.pdf
+SICSS_Cronograma_29-10.pdf
+construir_dataset.py
+descargar_hojas_corte_electoral.py
