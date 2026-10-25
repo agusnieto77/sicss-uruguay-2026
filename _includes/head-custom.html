@@ -46,9 +46,10 @@
       white-space: nowrap;
     }
   }
-  .tab-panel[hidden] { display: none; }
+  .tab-panel[hidden], .tab-panel > h1[hidden] { display: none; }
   .tab-panel > h1:first-child,
-  .tab-panel > h2:first-child { margin-top: 0; }
+  .tab-panel > h2:first-child,
+  .tab-panel > h1[hidden]:first-child + * { margin-top: 0; }
 </style>
 <script>
   // Shows the page content as tabs placed right below the header.
@@ -94,6 +95,12 @@
     var main = document.querySelector("main.main-content");
     if (!main) return;
     var footer = main.querySelector("footer.site-footer");
+    // The header already shows the page title; hide the identical "#" heading below it.
+    var headerTitle = document.querySelector("header.page-header .project-name");
+    var firstHeading = main.querySelector("h1");
+    if (headerTitle && firstHeading && normalize(headerTitle.textContent) === normalize(firstHeading.textContent)) {
+      firstHeading.hidden = true;
+    }
     var nodes = Array.prototype.filter.call(main.children, function (el) { return el !== footer; });
     if (nodes.filter(function (el) { return el.tagName === "H2"; }).length < 3) return;
 
