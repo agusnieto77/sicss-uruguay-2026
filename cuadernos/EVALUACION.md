@@ -1,6 +1,6 @@
-# Evaluación previa al taller
+# Evaluación de los cuadernos
 
-Pruebas realizadas el 24 de octubre de 2026 sobre las once imágenes de [`imagenes/`](imagenes/), antes de la revisión humana final. Las transcripciones citadas son salidas reales de los modelos; las lecturas correctas entre corchetes son las del documento.
+Antes del taller probé los cuatro cuadernos con las once imágenes de [`imagenes/`](imagenes/), tanto en Google Colab como en equipos propios, para saber cuánto tarda cada uno, qué puede fallar en clase y qué tipo de errores produce cada herramienta. Las transcripciones que cito son salidas textuales de los modelos; entre corchetes indico la lectura del documento.
 
 ## 1. Funcionamiento
 
@@ -8,23 +8,25 @@ Pruebas realizadas el 24 de octubre de 2026 sobre las once imágenes de [`imagen
 | --- | --- | --- |
 | 01 DocLayout-YOLO | ✅ completo | ✅ CPU (11 imágenes, 74 s) y RTX 5090 (11 imágenes, 37 s) |
 | 02 PP-StructureV3 | ✅ completo (instalación ~9 min, página ~2 min) | ✅ CPU (11 imágenes, 140 s) |
-| 03 PaddleOCR-VL | ✅ completo, página común y manuscritos (instalación 5 a 16 min según la sesión, página ~1 min) | ❌ RTX 5090 compartida: sin memoria libre; CPU: más de 10 min por página |
+| 03 PaddleOCR-VL | ✅ completo, página común y manuscritos (instalación 5 a 16 min según la sesión, página ~1 min) | ✅ RTX 5090 (11 imágenes, 2 min 45 s: ~15 s por página); en CPU, más de 10 min por página |
 | 04 GLM-OCR | ✅ completo (2 min 40 s en total) | ✅ CPU + Ollama (11 imágenes, 44 min) |
 
-### Problemas encontrados y corregidos
+### Ajustes técnicos
 
-- **Versión de PaddlePaddle.** `paddlepaddle` 3.3.1 falla en CPU con PP-StructureV3 (`ConvertPirAttribute2RuntimeAttribute not support`). Se fijó la 3.2.1.
-- **Choque de bibliotecas en Colab (02 y 03).** `paddlepaddle-gpu` instala la biblioteca NCCL de CUDA 12 por encima de la de CUDA 13 que usa el PyTorch de Colab; PaddleOCR importa PyTorch y la celda que prepara el pipeline fallaba. La celda de instalación restituye ahora la versión de NCCL que pide PyTorch.
-- **Idioma del reconocedor (02).** Sin `lang="es"`, PP-StructureV3 usa un reconocedor entrenado sobre todo con chino e inglés. Con `lang="es"` se usa el reconocedor latino de PP-OCRv5, que conserva tildes y eñes.
-- **Configuración de GLM-OCR (04).** El borrador escribía una configuración con solo los datos del servidor; el SDK no completa los valores faltantes y fallaba al iniciar. El cuaderno parte ahora de la configuración que trae el SDK. Además, el borrador dibujaba las cajas con coordenadas normalizadas (0 a 1000) como si fueran píxeles; ahora se reescalan al tamaño de la página.
-- **Servidor del modelo (04).** Se reemplazó vLLM por Ollama, que se instala en segundos en Colab y funciona en T4. El cuaderno precarga el modelo, porque la primera carga superaba el tiempo de espera del SDK.
-- **Páginas sin resultado (04).** Cuando el SDK no puede procesar una página (por ejemplo, por falta de memoria de GPU), la saltea sin error. El cuaderno avisa ahora qué página no produjo regiones, y las tablas vacías ya no rompen las celdas siguientes.
+Las pruebas obligaron a fijar algunas decisiones de instalación y configuración, que ya están incorporadas en los cuadernos:
+
+- **Versión de PaddlePaddle.** La versión 3.3.1 falla en CPU con PP-StructureV3 (`ConvertPirAttribute2RuntimeAttribute not support`), por lo que los cuadernos usan la 3.2.1.
+- **Compatibilidad con Colab (02 y 03).** `paddlepaddle-gpu` reemplaza la biblioteca NCCL que usa el PyTorch preinstalado en Colab por una versión incompatible, y PaddleOCR depende de PyTorch. La celda de instalación restituye la versión correcta.
+- **Idioma del reconocedor (02).** Sin `lang="es"`, PP-StructureV3 usa un reconocedor entrenado sobre todo con chino e inglés. Con `lang="es"` usa el reconocedor latino de PP-OCRv5, que conserva tildes y eñes.
+- **Configuración de GLM-OCR (04).** El cuaderno parte de la configuración completa que trae el SDK y solo modifica la conexión con el servidor del modelo; las coordenadas que devuelve el pipeline (normalizadas de 0 a 1000) se reescalan al tamaño real de la página.
+- **Servidor del modelo (04).** GLM-OCR se sirve con Ollama, que se instala en segundos en Colab y funciona en una T4. El cuaderno carga el modelo en memoria antes de usarlo, porque la primera carga puede superar el tiempo de espera del SDK.
+- **Páginas sin resultado (04).** Si el SDK no puede procesar una página (por ejemplo, por falta de memoria de GPU), la omite sin error. El cuaderno avisa qué página quedó sin regiones.
 
 ### Advertencias para la clase
 
 - Conviene ejecutar la celda de instalación de 02 y 03 **antes** de la explicación: tarda alrededor de nueve minutos.
 - Colab limita la cantidad de sesiones simultáneas por cuenta. Al pasar de un cuaderno a otro, cerrar la sesión anterior (*Entorno de ejecución → Desconectarse y eliminar entorno de ejecución*).
-- PaddleOCR-VL necesita GPU en la práctica. En CPU tarda más de diez minutos por página de prensa.
+- PaddleOCR-VL necesita GPU en la práctica: con una RTX 5090 procesa una página en unos 15 segundos, y en CPU tarda más de diez minutos por página de prensa.
 
 ## 2. Página común (*Centro Gallego*, Montevideo, 1917)
 
@@ -32,21 +34,21 @@ Pruebas realizadas el 24 de octubre de 2026 sobre las once imágenes de [`imagen
 
 DocLayout-YOLO detecta 70 regiones: 58 de texto, 6 figuras, 2 títulos y 4 descartables (`abandon`). Lo descartado es el número de página («6»), la cabecera «CENTRO GALLEGO» y un sello en la esquina inferior, detectado dos veces. El modelo trata como prescindible justamente la información que identifica la publicación. Las regiones se numeran de arriba hacia abajo sin respetar columnas: el modelo no sabe en qué orden se lee la página.
 
-### Orden de lectura y transcripción (02 y 04)
+### Orden de lectura y transcripción (02, 03 y 04)
 
-PP-StructureV3 reconstruye bien el recorrido de las cuatro columnas (columna 1 completa, luego 2, 3 y 4) y conserva la cabecera y el número de página. GLM-OCR los descarta por defecto (`header`, `number`) y presenta inversiones locales: bloques consecutivos de la misma columna aparecen en orden cambiado.
+PP-StructureV3 y PaddleOCR-VL reconstruyen bien el recorrido de las cuatro columnas (columna 1 completa, luego 2, 3 y 4) y conservan la cabecera y el número de página. GLM-OCR los descarta por defecto (`header`, `number`) y presenta inversiones locales: bloques consecutivos de la misma columna aparecen en orden cambiado.
 
-| Pasaje | PP-StructureV3 (02) | GLM-OCR (04) |
-| --- | --- | --- |
-| [El vapor "Barceló"] | El vapor "Barcelo'trajo | El vapor "Barceló" trajo |
-| [el alcalde] | el alealde | el alcalde |
-| [el nuevo alcalde don Carlos Puga Pequeño] | el muevo alcalde don Carios Puga Pequeño | el nuevo alcalde don Carios Puga Pequeño |
-| [Galicia] | Galitia | Galicia |
-| [embarcaciones] | embarcaciones | embarcações (portugués) |
-| [la colonia escolar] | la colonia cscoiar | la colonia escocar |
-| Sello de la esquina inferior | (sin texto) | RSAL ACADEMIA GATIEBA INTERNATIONAL EXPURGAR INDONESIA |
+| Pasaje | PP-StructureV3 (02) | PaddleOCR-VL (03) | GLM-OCR (04) |
+| --- | --- | --- | --- |
+| [El vapor "Barceló"] | El vapor "Barcelo'trajo | El vapor “Barceló” trajo | El vapor "Barceló" trajo |
+| [expresará el alcalde] | el alealde | el alealde | el alcalde |
+| [el nuevo alcalde don Carlos Puga Pequeño] | el muevo alcalde don Carios Puga Pequeño | nuevo alealde don Carios Puga Pequeño | el nuevo alcalde don Carios Puga Pequeño |
+| [Galicia] | Galitia | Galicia | Galicia |
+| [embarcaciones] | embarcaciones | embarcaaciones | embarcações (portugués) |
+| [la colonia escolar] | la colonia cscoiar | la colonia escoiar | la colonia escocar |
+| Sello de la esquina inferior | (sin texto) | (sin texto) | RSAL ACADEMIA GATIEBA INTERNATIONAL EXPURGAR INDONESIA |
 
-GLM-OCR produce un texto más limpio, y por eso sus errores son más difíciles de ver: cambia una palabra española por su forma portuguesa, inventa el texto de un sello ilegible y **duplica** la frase «Madrid cotizose en la capitai de España a los siguientes precios», que aparece en dos bloques seguidos. PP-StructureV3 comete más errores de caracteres, pero son visibles.
+GLM-OCR produce el texto más limpio, y por eso sus errores son los más difíciles de ver: cambia una palabra española por su forma portuguesa e inventa el texto de un sello ilegible. GLM-OCR y PaddleOCR-VL **duplican** además la frase «Madrid cotizose en la capital de España a los siguientes precios», que aparece en dos bloques seguidos. PP-StructureV3 comete más errores de caracteres, pero son visibles. Ninguno de los tres lee bien el nombre «Carlos Puga Pequeño», que aparece como «Carios» en las tres salidas.
 
 ## 3. Manuscritos
 
@@ -76,7 +78,7 @@ Se probó en Colab con la página común y con los cinco manuscritos. Es, con di
 
 El riesgo característico de este modelo es la **sustitución por palabras verosímiles**: produce palabras españolas reales («Represión») donde el documento dice otra cosa. Es más difícil de detectar que el texto ilegible de 02.
 
-La prueba en la RTX 5090 no pudo hacerse: otro usuario ocupaba 26 de sus 32 GB con un servicio propio, y PaddleOCR-VL no entró en la memoria restante.
+En una RTX 5090, PaddleOCR-VL procesó las once imágenes en 2 minutos 45 segundos, unos 15 segundos por página. Las transcripciones son muy similares a las obtenidas en Colab, con pequeñas variaciones entre ejecuciones.
 
 ## 5. Preguntas que estos resultados permiten discutir
 
