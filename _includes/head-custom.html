@@ -34,8 +34,9 @@
 </style>
 <script>
   // Shows the page content as tabs placed right below the header.
-  // Sections ("##") listed in GROUPS share a tab; other sections get their own tab.
-  // Content before the first "##" opens the "Inicio" tab.
+  // Sections ("##") listed in GROUPS share a tab or get a shorter label; other sections get their own tab.
+  // Content before the first "##" gets the tab named in INTRO for that page (by its "#" title),
+  // or joins the first section's tab when INTRO maps the page to null. Default: "Inicio".
   document.addEventListener("DOMContentLoaded", function () {
     var GROUPS = {
       "presentacion": "Inicio",
@@ -51,7 +52,22 @@
       "a. layout, materialidad y segmentacion": "A. Layout",
       "b. ocr, errores y critica de fuentes digitalizadas": "B. OCR",
       "c. entropia lite, desarrollo y critica de herramientas": "C. Herramientas",
-      "d. rag, agentes y consulta asistida": "D. RAG y agentes"
+      "d. rag, agentes y consulta asistida": "D. RAG y agentes",
+      "como usarlos en colab": "Uso en Colab",
+      "elegir las imagenes": "Imágenes",
+      "imagenes": "Imágenes",
+      "que produce cada cuaderno": "Resultados",
+      "ejecutar fuera de colab": "Fuera de Colab",
+      "1. funcionamiento": "Funcionamiento",
+      "2. pagina comun (centro gallego, montevideo, 1917)": "Página común",
+      "3. manuscritos": "Manuscritos",
+      "4. paddleocr-vl (03)": "PaddleOCR-VL",
+      "5. preguntas que estos resultados permiten discutir": "Preguntas"
+    };
+    var INTRO = {
+      "cuadernos del taller: layout y ocr": "Cuadernos",
+      "bibliografia del taller": "Presentación",
+      "evaluacion de los cuadernos": null
     };
     var normalize = function (text) {
       return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
@@ -63,13 +79,19 @@
     var nodes = Array.prototype.filter.call(main.children, function (el) { return el !== footer; });
     if (nodes.filter(function (el) { return el.tagName === "H2"; }).length < 3) return;
 
+    var title = main.querySelector("h1");
+    var introKey = title ? normalize(title.textContent) : "";
+    var introLabel = introKey in INTRO ? INTRO[introKey] : "Inicio";
+
     var tabs = [];
     var byLabel = {};
     var current = null;
+    var pending = [];
     nodes.forEach(function (node) {
       var label = null;
       if (node.tagName === "H2") label = GROUPS[normalize(node.textContent)] || node.textContent.trim();
-      else if (!current) label = "Inicio";
+      else if (!current && introLabel) label = introLabel;
+      else if (!current) { pending.push(node); return; }
       if (label) {
         if (!byLabel[label]) {
           var panel = document.createElement("section");
@@ -79,6 +101,8 @@
           tabs.push(byLabel[label]);
         }
         current = byLabel[label];
+        pending.forEach(function (n) { current.panel.appendChild(n); });
+        pending = [];
       }
       current.panel.appendChild(node);
     });
