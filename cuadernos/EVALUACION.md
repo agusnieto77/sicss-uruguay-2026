@@ -4,12 +4,12 @@ Antes del taller probé los cuatro cuadernos con las once imágenes de [`imagene
 
 ## 1. Funcionamiento
 
-| Cuaderno | Google Colab (T4, Python 3.13) | Otras pruebas |
+| Cuaderno | Google Colab (T4, Python 3.13) | Otros equipos |
 | --- | --- | --- |
-| 01 DocLayout-YOLO | ✅ completo | ✅ CPU (11 imágenes, 74 s) y RTX 5090 (11 imágenes, 37 s) |
-| 02 PP-StructureV3 | ✅ completo (instalación ~9 min, página ~2 min) | ✅ CPU (11 imágenes, 140 s) |
-| 03 PaddleOCR-VL | ✅ completo, página común y manuscritos (instalación 5 a 16 min según la sesión, página ~1 min) | ✅ RTX 5090 (11 imágenes, 2 min 45 s: ~15 s por página); en CPU, más de 10 min por página |
-| 04 GLM-OCR | ✅ completo (2 min 40 s en total) | ✅ CPU + Ollama (11 imágenes, 44 min) |
+| 01 DocLayout-YOLO | Funciona | CPU: 11 imágenes en 74 s. RTX 5090: 11 imágenes en 37 s |
+| 02 PP-StructureV3 | Funciona. Instalación de unos 9 min; unos 2 min por página | CPU: 11 imágenes en 140 s |
+| 03 PaddleOCR-VL | Funciona con la página común y los manuscritos. Instalación de 5 a 16 min según la sesión; alrededor de 1 min por página | RTX 5090: 11 imágenes en 2 min 45 s (unos 15 s por página). En CPU, más de 10 min por página |
+| 04 GLM-OCR | Funciona. 2 min 40 s en total | CPU con Ollama: 11 imágenes en 44 min |
 
 ### Ajustes técnicos
 

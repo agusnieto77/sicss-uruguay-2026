@@ -6,7 +6,7 @@
 **Modalidad:** cuatro encuentros presenciales, cada uno con un bloque conceptual por la mañana y un taller práctico por la tarde.  
 **Destinatarios:** estudiantes, docentes e investigadores de historia, humanidades y ciencias sociales.  
 **Docente:** Agustín Nieto.  
-**Horarios:** 10-13hs | 14-16hs. 
+**Horarios:** 10-13hs | 14-16hs.  
 **Sede:** UdelaR.
 
 > Transformar una fuente histórica en datos procesables no es una operación neutral. La identificación de regiones de una página, su transcripción y su posterior consulta mediante modelos de IA implican decisiones sobre la unidad documental, la materialidad de las fuentes, su fidelidad y su interpretación.
@@ -45,17 +45,17 @@ Conocer, aplicar y evaluar críticamente procedimientos de segmentación, transc
 
 ## Desarrollo de las actividades
 
-### Módulo 1 — Layout: estructura y organización de los documentos
+### Módulo 1. Layout: estructura y organización de los documentos
 
 **Preguntas orientadoras:** ¿qué constituye una noticia o una unidad documental en una página? ¿Qué información se pierde al separar un artículo de su ubicación y relaciones visuales? ¿Cómo afectan los errores de detección a la construcción de un corpus?
 
 **Conceptual:** prensa histórica como objeto material; columnas, avisos, ilustraciones, títulos y orden de lectura; segmentación automática y decisiones de clasificación; lectura crítica de resultados.
 
-**Práctico en Google Colab:** cargar una imagen de prensa multicolumna; aplicar **DocLayout-YOLO**; revisar etiquetas, cajas y umbrales de confianza; guardar `pagina_anotada.jpg`, `segmentos/`, `regiones.csv` y `regiones.json`. Comparar los recortes con la página original e identificar cortes incorrectos o asociaciones perdidas.
+**Práctico en Google Colab:** cargar una imagen de prensa multicolumna; aplicar **DocLayout-YOLO**; revisar etiquetas, cajas y umbrales de confianza; guardar la página anotada (`regiones.png`), la carpeta `recortes/`, `regiones.csv` y `regiones.json`. Comparar los recortes con la página original e identificar cortes incorrectos o asociaciones perdidas.
 
 **Producto:** una página anotada, una carpeta de recortes y una ficha breve de errores y decisiones de segmentación.
 
-### Módulo 2 — OCR: reconocimiento de texto y control de errores
+### Módulo 2. OCR: reconocimiento de texto y control de errores
 
 **Preguntas orientadoras:** ¿cuándo una transcripción es suficientemente fiel? ¿Por qué una salida fluida puede ser incorrecta? ¿Qué sucede cuando el OCR confunde columnas, nombres, cifras o anuncios?
 
@@ -67,7 +67,7 @@ Conocer, aplicar y evaluar críticamente procedimientos de segmentación, transc
 
 > La ruta de GLM-OCR que produce layout no debe confundirse con la ejecución aislada del reconocedor textual: requiere un pipeline de análisis de regiones, como el que integra PP-DocLayout.
 
-### Módulo 3 — Layout y OCR en EntropIA Lite
+### Módulo 3. Layout y OCR en EntropIA Lite
 
 **Preguntas orientadoras:** ¿qué decisiones historiográficas se incorporan a una aplicación? ¿Cómo se documenta el pasaje del archivo al corpus? ¿Qué controles debe conservar el investigador?
 
@@ -77,7 +77,7 @@ Conocer, aplicar y evaluar críticamente procedimientos de segmentación, transc
 
 **Producto:** colección funcional con documentos procesados y una ficha de crítica de la herramienta que distinga usabilidad de decisiones epistemológicas.
 
-### Módulo 4 — RAG y agentes en EntropIA Lite
+### Módulo 4. RAG y agentes en EntropIA Lite
 
 **Preguntas orientadoras:** ¿qué diferencia hay entre hallar un documento y generar una respuesta sobre él? ¿Qué significa que una respuesta esté fundamentada? ¿Qué decisiones debe validar el investigador?
 
@@ -109,10 +109,10 @@ El docente facilitará una **muestra común de páginas de prensa histórica mul
 
 El paquete de ejercicios está en la carpeta [`cuadernos/`](cuadernos/README.md). Los cuatro notebooks se abren directamente en Google Colab, instalan lo que necesitan y trabajan sobre una misma página común de prensa multicolumna (*Centro Gallego*, Montevideo, 1917), con la opción de procesar también otras páginas de prensa, cartas, actas y un diario manuscrito de dominio público:
 
-1. `01_DocLayout_YOLO_segmentacion.ipynb` — detección de layout, imagen anotada, recortes y tabla de regiones.
-2. `02_PP_StructureV3_layout_OCR.ipynb` — layout, orden de lectura y OCR estructurado con visualizaciones y texto.
-3. `03_PaddleOCR_VL_layout_OCR.ipynb` — reconocimiento multimodal con salida visual y textual.
-4. `04_GLM_OCR_pipeline.ipynb` — pipeline completo de GLM-OCR (layout PP-DocLayoutV3 y reconocimiento GLM-OCR servido con Ollama).
+1. `01_DocLayout_YOLO_segmentacion.ipynb`: detección de layout, imagen anotada, recortes y tabla de regiones.
+2. `02_PP_StructureV3_layout_OCR.ipynb`: layout, orden de lectura y OCR estructurado con visualizaciones y texto.
+3. `03_PaddleOCR_VL_layout_OCR.ipynb`: reconocimiento multimodal con salida visual y textual.
+4. `04_GLM_OCR_pipeline.ipynb`: pipeline completo de GLM-OCR (layout PP-DocLayoutV3 y reconocimiento GLM-OCR servido con Ollama).
 
 Los cuatro se probaron en Google Colab con GPU T4. Aun así son materiales experimentales: los resultados varían según la página, y la instalación de los cuadernos 02 y 03 tarda alrededor de nueve minutos, por lo que conviene ejecutarla antes de cada jornada.
 

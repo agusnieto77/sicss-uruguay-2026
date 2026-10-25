@@ -63,7 +63,7 @@ Los cuadernos funcionan también en una computadora propia; en ese caso no insta
 
 | Cuaderno | Paquetes |
 | --- | --- |
-| 01 | `doclayout-yolo==0.0.4 pandas matplotlib` |
+| 01 | `doclayout-yolo==0.0.4 huggingface_hub pandas matplotlib` |
 | 02 y 03 | `paddlepaddle==3.2.1` (o `paddlepaddle-gpu==3.2.1`) y `paddleocr[doc-parser]==3.7.0 pandas matplotlib` |
 | 04 | `glmocr[selfhosted]==0.1.5 pandas matplotlib`, y Ollama con el modelo `glm-ocr` |
 
