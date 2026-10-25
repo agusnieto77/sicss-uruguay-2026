@@ -57,7 +57,7 @@ DocLayout-YOLO no detecta texto en ningún manuscrito: cada página completa se 
 | Documento | PP-StructureV3 (02) | GLM-OCR (04) |
 | --- | --- | --- |
 | Acta de Baradero, 1857 [En veinte y dos de Octubre de mil ochocientos cincuenta y siete] | En veinle y das de Detubre de mul oshocienlos ceomonta y vile | En veinte y das de Octubre de mul oshociendas comentanta y pide; inserta letras cirílicas («loно'») |
-| Carta de Díez Colunje, 1905 | «Sr. Dn guje iagni Mey estizado aiga.» Texto poco legible | «Sr. Du gerje Iragerri Muy estimado arrigo.» Estructura de carta reconocible |
+| Carta de Diez-Colunje, 1905 | «Sr. Dn guje iagni Mey estizado aiga.» Texto poco legible | «Sr. Du gerje Iragerri Muy estimado arrigo.» Estructura de carta reconocible |
 | Carta de Cullen, 1823 | 565 caracteres sin sentido («CANGS 2osn AA *4A (23)Junise l Hhanyge…») | Solo «Senior Juan Co Solano Antuña / bueno Sep 1823»: **omite el resto de la carta sin aviso** |
 | Diario de Olivares, 1745 | 101 caracteres sin sentido | Solo «1745» |
 | Acta de Medellín, 1814 | Fragmentos sueltos («mpue l E. or ensi Jeme…») | Texto fluido con errores de sentido («Mpuesto el Emir. Sor. Presidene…») |
@@ -73,7 +73,7 @@ Se probó en Colab con la página común y con los cinco manuscritos. Es, con di
 | Diario de Olivares, 1745 [Diario del viage que yo D. Joachin de Olivares y Centeno, Comandante de la Fragata de S. M. nombrada S. Antonio…] | «Dianio del viage, que To D. Toachin de Olivano, y Centeno Comandante de la Fragata de SM nombraba T. Antonio, he hecho desde el Rio de la La…». Recupera el sentido del encabezamiento, donde 02 devolvió caracteres sin sentido y 04 solo «1745» |
 | Acta de Baradero, 1857 | «En weinte y das de Octubre de mul oshocienos cermenta y gite»: la fecha sigue sin poder leerse, y los nombres de los concejales quedan desfigurados («D. Fallip Syrrh») |
 | Carta de Cullen, 1823 | Transcribe la carta completa (987 caracteres), pero con frases sin sentido («Guaide Haug. Anlenoch Llygu. or etc. conduct») |
-| Carta de Díez Colunje, 1905 | Estructura y vocabulario reconocibles («Muy estimado amigo»), con nombres propios alterados («Beabiz O'Donnell de Pombo») y caracteres de reemplazo (`�`) |
+| Carta de Diez-Colunje, 1905 | Estructura y vocabulario reconocibles («Muy estimado amigo»), con nombres propios alterados («Beabiz O'Donnell de Pombo») y caracteres de reemplazo (`�`) |
 | Acta de Medellín, 1814 | Sustituye palabras por otras existentes que cambian el sentido: «Representante» se lee «Represión» |
 
 El riesgo característico de este modelo es la **sustitución por palabras verosímiles**: produce palabras españolas reales («Represión») donde el documento dice otra cosa. Es más difícil de detectar que el texto ilegible de 02.
