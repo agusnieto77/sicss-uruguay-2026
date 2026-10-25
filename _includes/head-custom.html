@@ -31,6 +31,21 @@
     font-weight: 600;
     border-bottom-color: #159957;
   }
+  @media screen and (max-width: 42em) {
+    .tabs-nav {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 0 0.5rem;
+    }
+    .tabs-nav::-webkit-scrollbar { display: none; }
+    .tabs-nav button {
+      flex: 0 0 auto;
+      padding: 0.75rem 0.8rem 0.6rem;
+      white-space: nowrap;
+    }
+  }
   .tab-panel[hidden] { display: none; }
   .tab-panel > h1:first-child,
   .tab-panel > h2:first-child { margin-top: 0; }
@@ -135,6 +150,8 @@
         tab.panel.hidden = i !== index;
         tab.button.setAttribute("aria-selected", String(i === index));
       });
+      var button = tabs[index].button;
+      nav.scrollLeft = button.offsetLeft - (nav.clientWidth - button.offsetWidth) / 2;
     }
 
     function showTarget(hash) {
