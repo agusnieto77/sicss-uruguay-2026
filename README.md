@@ -1,14 +1,15 @@
-# Taller: investigación histórica asistida por IA
+# Taller: investigación histórica asistida por IA (en elaboración)
 
 **Segmentación de documentos, reconocimiento de texto y exploración de fuentes con EntropIA Lite**
 
 **Fechas:** viernes 30 de octubre, martes 3, miércoles 4 y jueves 5 de noviembre de 2026.  
 **Modalidad:** cuatro encuentros presenciales, cada uno con un bloque conceptual por la mañana y un taller práctico por la tarde.  
 **Destinatarios:** estudiantes, docentes e investigadores de historia, humanidades y ciencias sociales.  
-**Docente:** a completar.  
-**Sede y horarios precisos:** a confirmar por la organización.
+**Docente:** Agustín Nieto.  
+**Horarios:** 10-13hs | 14-16hs.
+**Sede:** Universidad de la República.
 
-> **Idea rectora:** transformar una fuente histórica en datos procesables no es una operación neutral. La identificación de regiones de una página, su transcripción y su posterior consulta mediante modelos de IA implican decisiones sobre la unidad documental, la materialidad de las fuentes, su fidelidad y su interpretación.
+> Transformar una fuente histórica en datos procesables no es una operación neutral. La identificación de regiones de una página, su transcripción y su posterior consulta mediante modelos de IA implican decisiones sobre la unidad documental, la materialidad de las fuentes, su fidelidad y su interpretación.
 
 ## Presentación
 
@@ -33,14 +34,14 @@ Conocer, aplicar y evaluar críticamente procedimientos de segmentación, transc
 
 ## Organización de los encuentros
 
-| Fecha | Módulo | Mañana: conceptos y discusión | Tarde: práctica |
+| Fecha | Módulo | Mañana 10-13hs: conceptual | Tarde 14-16hs: práctica |
 |---|---|---|---|
 | **Vie. 30/10** | **1. Layout: estructura y organización de los documentos** | Materialidad de la prensa, jerarquías editoriales, unidades documentales y sesgos de segmentación. YOLO y análisis de layout. | Colab con DocLayout-YOLO: página con **cajas y etiquetas**; exportación de **segmentos recortados** y coordenadas. |
 | **Mar. 03/11** | **2. OCR: reconocimiento de texto y control de errores** | OCR tradicional, reconocimiento estructurado y modelos multimodales. CER/WER, normalización, omisiones y alucinaciones. | Colabs con PP-StructureV3, PaddleOCR-VL y, si los recursos lo permiten, GLM-OCR: **layout nativo visualizado** y **texto extraído**. |
 | **Mié. 04/11** | **3. Layout y OCR en EntropIA Lite: procesamiento, exploración y análisis de fuentes históricas** | Digitalización crítica, decisiones incorporadas al software, procedencia y trazabilidad. | Importar una muestra, crear colecciones, ejecutar el procesamiento disponible, inspeccionar o corregir resultados y explorar el corpus. |
 | **Jue. 05/11** | **4. RAG y agentes en EntropIA Lite** | Búsqueda literal y semántica, recuperación por pasajes, respuestas fundamentadas, límites de los agentes y validación de evidencia. | Consultas sobre el corpus, comparación con documentos originales, registro de aciertos, omisiones y respuestas no fundamentadas; actividad integradora. |
 
-**Nota:** las demostraciones de la tercera y cuarta jornadas deben ajustarse a las funciones efectivamente disponibles en la versión instalada de EntropIA Lite. Las funciones que requieran servicios remotos estarán sujetas a conexión, credenciales, cuotas y costos de los proveedores.
+**Nota:** Las demostraciones de la tercera y cuarta jornadas se ajustarán a las funcionalidades disponibles en la versión instalada de EntropIA Lite. Para utilizar las herramientas que requieran servicios remotos, será necesario contar con conexión a Internet y las correspondientes claves de API (*API keys*). **Quienes no dispongan de estas claves podrán utilizar las que serán facilitadas por el docente durante el taller**, de modo que todos los participantes puedan realizar las actividades prácticas previstas, sujetas a las cuotas y límites de uso de los proveedores.
 
 ## Desarrollo de las actividades
 
@@ -113,7 +114,7 @@ El paquete de ejercicios está en la carpeta [`cuadernos/`](cuadernos/README.md)
 3. `03_PaddleOCR_VL_layout_OCR.ipynb` — reconocimiento multimodal con salida visual y textual.
 4. `04_GLM_OCR_pipeline.ipynb` — pipeline completo de GLM-OCR (layout PP-DocLayoutV3 y reconocimiento GLM-OCR servido con Ollama).
 
-Los cuatro se probaron de punta a punta en Google Colab con GPU T4. Aun así son materiales experimentales: los resultados varían según la página, y la instalación de los cuadernos 02 y 03 tarda alrededor de nueve minutos, por lo que conviene ejecutarla antes de cada jornada.
+Los cuatro se probaron en Google Colab con GPU T4. Aun así son materiales experimentales: los resultados varían según la página, y la instalación de los cuadernos 02 y 03 tarda alrededor de nueve minutos, por lo que conviene ejecutarla antes de cada jornada.
 
 ## Modalidad de trabajo y evaluación formativa
 
@@ -123,7 +124,7 @@ La evaluación formativa se basará en los cuatro productos de taller y en el in
 
 ## Bibliografía por módulos
 
-La lista combina textos de reflexión historiográfica, estudios aplicados y literatura sobre herramientas. Cada bloque corresponde a un módulo del taller y distingue **lecturas sugeridas**, que orientan la discusión de cada jornada, de **lecturas ampliatorias**, para profundizar. Las sugeridas no son obligatorias. Los preprints y los blogs se indican como tales: no son trabajos revisados por pares y conviene consignar su estado al citarlos formalmente.
+La lista combina textos de reflexión historiográfica, estudios aplicados y literatura sobre herramientas. Cada bloque corresponde a un módulo del taller y distingue **lecturas sugeridas**, que orientan la discusión de cada jornada, de **lecturas ampliatorias**, para profundizar. Las sugeridas no son obligatorias. 
 
 Las copias de lectura de estos textos se encuentran en la carpeta [`bibliografia/`](bibliografia/README.md), organizada con la misma estructura.
 
@@ -209,7 +210,7 @@ Las copias de lectura de estos textos se encuentran en la carpeta [`bibliografia
 3. **Revisar el orden de lectura:** una transcripción correcta de cada bloque puede resultar históricamente equívoca si se ensamblan mal las columnas.
 4. **Diferenciar legibilidad y fidelidad:** la corrección lingüística de un texto generado no garantiza su correspondencia con la fuente.
 5. **Fundamentar las respuestas:** contrastar afirmaciones, nombres, fechas y citas con los pasajes originales.
-6. **Reconocer la dimensión científica del diseño:** las herramientas facilitan ciertas operaciones analíticas y dificultan otras, por lo que también deben convertirse en objeto de crítica.
+6. **Reconocer los alcances y límites del diseño:** las herramientas facilitan ciertas operaciones analíticas y dificultan otras, por lo que también deben convertirse en objeto de crítica.
 
 ## Resultado esperado
 
