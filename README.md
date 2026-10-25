@@ -6,7 +6,7 @@
 **Modalidad:** cuatro encuentros presenciales, cada uno con un bloque conceptual por la mañana y un taller práctico por la tarde.  
 **Destinatarios:** estudiantes, docentes e investigadores de historia, humanidades y ciencias sociales.  
 **Docente:** Agustín Nieto.  
-**Horarios:** 10-13hs | 14-16hs.  
+**Horarios:** 10-13 h | 14-16 h.  
 **Sede:** UdelaR.
 
 > Transformar una fuente histórica en datos procesables no es una operación neutral. La identificación de regiones de una página, su transcripción y su posterior consulta mediante modelos de IA implican decisiones sobre la unidad documental, la materialidad de las fuentes, su fidelidad y su interpretación.
@@ -34,7 +34,7 @@ Conocer, aplicar y evaluar críticamente procedimientos de segmentación, transc
 
 ## Organización de los encuentros
 
-| Fecha | Módulo | Mañana 10-13hs: conceptual | Tarde 14-16hs: práctica |
+| Fecha | Módulo | Mañana 10-13 h: conceptual | Tarde 14-16 h: práctica |
 |---|---|---|---|
 | **Vie. 30/10** | **1. Layout: estructura y organización de los documentos** | Materialidad de la prensa, jerarquías editoriales, unidades documentales y sesgos de segmentación. YOLO y análisis de layout. | Colab con DocLayout-YOLO: página con **cajas y etiquetas**; exportación de **segmentos recortados** y coordenadas. |
 | **Mar. 03/11** | **2. OCR: reconocimiento de texto y control de errores** | OCR tradicional, reconocimiento estructurado y modelos multimodales. CER/WER, normalización, omisiones y alucinaciones. | Colabs con PP-StructureV3, PaddleOCR-VL y, si los recursos lo permiten, GLM-OCR: **layout nativo visualizado** y **texto extraído**. |
