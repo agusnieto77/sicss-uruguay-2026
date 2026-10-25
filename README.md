@@ -6,7 +6,7 @@
 **Modalidad:** cuatro encuentros presenciales, cada uno con un bloque conceptual por la mañana y un taller práctico por la tarde.  
 **Destinatarios:** estudiantes, docentes e investigadores de historia, humanidades y ciencias sociales.  
 **Docente:** Agustín Nieto.  
-**Horarios:** 10-13hs | 14-16hs.
+**Horarios:** 10-13hs | 14-16hs. 
 **Sede:** Universidad de la República.
 
 > Transformar una fuente histórica en datos procesables no es una operación neutral. La identificación de regiones de una página, su transcripción y su posterior consulta mediante modelos de IA implican decisiones sobre la unidad documental, la materialidad de las fuentes, su fidelidad y su interpretación.
