@@ -6,3 +6,6 @@ __pycache__/
 # Notebook outputs and personal images when running the notebooks locally.
 cuadernos/resultados/
 cuadernos/mis_imagenes/
+
+# Personal data of participants: never publish.
+Participantes_SICSS.xlsx
