@@ -17,3 +17,7 @@ Cronograma-Cronograma-tentativo.pdf
 SICSS_Cronograma_29-10.pdf
 construir_dataset.py
 descargar_hojas_corte_electoral.py
+
+# Talk sources and presenter build carry speaker notes: publish only the public index.html.
+slides/ia-fuentes-historicas/*
+!slides/ia-fuentes-historicas/index.html
