@@ -47,6 +47,12 @@ Conocer, aplicar y evaluar críticamente procedimientos de segmentación, transc
 
 ### Módulo 1. Layout: estructura y organización de los documentos
 
+**Presentación de la clase:** [Layout: estructura de la página](slides/layout/index.html) · [PDF](slides/layout/qa/presentation.pdf). Son 42 diapositivas con conceptos, ejemplos de prensa y criterios de evaluación. La práctica se trabaja por separado en el [cuaderno 01: DocLayout-YOLO](cuadernos/01_DocLayout_YOLO_segmentacion.ipynb).
+
+**Uso de la presentación:**
+- **← / →:** navegar. **S:** abrir la ventana del presentador, con notas y navegación sincronizada con la proyección. Para esta función, servir el proyecto desde su carpeta raíz con `python3 -m http.server 8000 --bind 127.0.0.1` y abrir [la presentación local](http://127.0.0.1:8000/slides/layout/index.html); permitir la ventana emergente si el navegador la bloquea.
+- **Clic en una imagen:** ampliar; **Esc** o **×:** cerrar. **Ctrl+P:** imprimir o guardar como PDF; la imagen ampliada queda excluida de la impresión aunque esté abierta.
+
 **Preguntas orientadoras:** ¿qué constituye una noticia o una unidad documental en una página? ¿Qué información se pierde al separar un artículo de su ubicación y relaciones visuales? ¿Cómo afectan los errores de detección a la construcción de un corpus?
 
 **Conceptual:** prensa histórica como objeto material; columnas, avisos, ilustraciones, títulos y orden de lectura; segmentación automática y decisiones de clasificación; lectura crítica de resultados.
@@ -126,24 +132,24 @@ La evaluación formativa se basará en los cuatro productos de taller y en el in
 
 La lista combina textos de reflexión historiográfica, estudios aplicados y literatura sobre herramientas. Cada bloque corresponde a un módulo del taller y distingue **lecturas sugeridas**, que orientan la discusión de cada jornada, de **lecturas ampliatorias**, para profundizar. Las sugeridas no son obligatorias. 
 
-Las copias de lectura de estos textos se encuentran en la carpeta [`bibliografia/`](bibliografia/README.md), organizada con la misma estructura.
+Las copias de lectura de estos textos se encuentran en la carpeta [`bibliografia/`](bibliografia/README.md), organizada con la misma estructura. La etiqueta `ES` enlaza una traducción al español, no oficial y de uso docente.
 
 ### A. Layout, materialidad y segmentación (Módulo 1)
 
 **Lecturas sugeridas**
 
-- Prescott, A., y Hughes, L. (2018). [*Why Do We Digitize? The Case for Slow Digitization*](bibliografia/A/sugerida/Prescott-Hughes_2018_Why-Do-We-Digitize.pdf). *Archive Journal*.
-- Lee, B. C. G., Mears, J., Jakeway, E., Ferriter, M., Adams, C., Yarasavage, N., Thomas, D., Zwaard, K., y Weld, D. S. (2020). [*The Newspaper Navigator Dataset: Extracting and Analyzing Visual Content from 16 Million Historic Newspaper Pages in Chronicling America*](bibliografia/A/sugerida/Lee-et-al_2020_Newspaper-Navigator.pdf). En *Proceedings of the 29th ACM International Conference on Information & Knowledge Management (CIKM '20)* (pp. 3055–3062). ACM.
-- Dell, M., Carlson, J., Bryan, T., Silcock, E., Arora, A., Shen, Z., D'Amico-Wong, L., Le, Q., Querubin, P., y Heldring, L. (2023). [*American Stories: A Large-Scale Structured Text Dataset of Historical U.S. Newspapers*](bibliografia/A/sugerida/Dell-et-al_2023_American-Stories.pdf). En *Advances in Neural Information Processing Systems 36* (pp. 80744–80772).
-- Macicior-Mitxelena, J., y García-Serrano, A. (2026). [*Data Matters: Looking for High-Quality Corpora to Build Robust and Reliable Models for Humanists*](bibliografia/A/sugerida/Macicior-Garcia_2026_Data-Matters.pdf). En *Proceedings of the First Workshop on Creating Interoperable Corpora of Historical Newspapers (PressMint 2026)* (pp. 82–91). ACL.
+- Prescott, A., y Hughes, L. (2018). [*Why Do We Digitize? The Case for Slow Digitization*](bibliografia/A/sugerida/Prescott-Hughes_2018_Why-Do-We-Digitize.pdf) [`ES`](bibliografia/A/sugerida/Prescott-Hughes_2018_Why-Do-We-Digitize_ES.pdf). *Archive Journal*.
+- Lee, B. C. G., Mears, J., Jakeway, E., Ferriter, M., Adams, C., Yarasavage, N., Thomas, D., Zwaard, K., y Weld, D. S. (2020). [*The Newspaper Navigator Dataset: Extracting and Analyzing Visual Content from 16 Million Historic Newspaper Pages in Chronicling America*](bibliografia/A/sugerida/Lee-et-al_2020_Newspaper-Navigator.pdf) [`ES`](bibliografia/A/sugerida/Lee-et-al_2020_Newspaper-Navigator_ES.pdf). En *Proceedings of the 29th ACM International Conference on Information & Knowledge Management (CIKM '20)* (pp. 3055–3062). ACM.
+- Dell, M., Carlson, J., Bryan, T., Silcock, E., Arora, A., Shen, Z., D'Amico-Wong, L., Le, Q., Querubin, P., y Heldring, L. (2023). [*American Stories: A Large-Scale Structured Text Dataset of Historical U.S. Newspapers*](bibliografia/A/sugerida/Dell-et-al_2023_American-Stories.pdf) [`ES`](bibliografia/A/sugerida/Dell-et-al_2023_American-Stories_ES.pdf). En *Advances in Neural Information Processing Systems 36* (pp. 80744–80772).
+- Macicior-Mitxelena, J., y García-Serrano, A. (2026). [*Data Matters: Looking for High-Quality Corpora to Build Robust and Reliable Models for Humanists*](bibliografia/A/sugerida/Macicior-Garcia_2026_Data-Matters.pdf) [`ES`](bibliografia/A/sugerida/Macicior-Garcia_2026_Data-Matters_ES.pdf). En *Proceedings of the First Workshop on Creating Interoperable Corpora of Historical Newspapers (PressMint 2026)* (pp. 82–91). ACL.
 
 **Lecturas ampliatorias**
 
-- Silva dos Santos Júnior, E., Paixão, T., y Alvarez, A. B. (2025). [*Comparative Performance of YOLOv8, YOLOv9, YOLOv10, and YOLOv11 for Layout Analysis of Historical Documents Images*](bibliografia/A/ampliatoria/SilvaDosSantos-et-al_2025_YOLO-Layout-Historical.pdf). *Applied Sciences, 15*(6), 3164.
-- Beyene, F. S., y Dancy, C. L. (2025). [*Layout-Aware OCR in Black Digital Archives: An Unsupervised Evaluation Approach*](bibliografia/A/ampliatoria/Beyene-Dancy_2025_Layout-Aware-OCR-Black-Archives.pdf). Preprint, arXiv.
-- Prescott, A. (2018). [*Searching for Dr. Johnson: The Digitisation of the Burney Newspaper Collection*](bibliografia/A/ampliatoria/Prescott_2018_Searching-for-Dr-Johnson.pdf). En S. G. Brandtzæg, P. Goring y C. Watson (Eds.), *Travelling Chronicles: News and Newspapers from the Early Modern Period to the Eighteenth Century* (pp. 51–71). Brill.
-- Prescott, A. (2019). [*Slow Digitisation and the Battle of the Books*](bibliografia/A/ampliatoria/Prescott_2019_Slow-Digitisation-Battle-of-Books.pdf). En C. E. Karkov (Ed.), *Slow Scholarship: Medieval Research and the Neoliberal University* (pp. 143–162). D. S. Brewer.
-- Hitchcock, T. (2013). [*Confronting the Digital: Or How Academic History Writing Lost the Plot*](bibliografia/A/ampliatoria/Hitchcock_2013_Confronting-the-Digital.pdf). *Cultural and Social History, 10*(1), 9–23.
+- Silva dos Santos Júnior, E., Paixão, T., y Alvarez, A. B. (2025). [*Comparative Performance of YOLOv8, YOLOv9, YOLOv10, and YOLOv11 for Layout Analysis of Historical Documents Images*](bibliografia/A/ampliatoria/SilvaDosSantos-et-al_2025_YOLO-Layout-Historical.pdf) [`ES`](bibliografia/A/ampliatoria/SilvaDosSantos-et-al_2025_YOLO-Layout-Historical_ES.pdf). *Applied Sciences, 15*(6), 3164.
+- Beyene, F. S., y Dancy, C. L. (2025). [*Layout-Aware OCR in Black Digital Archives: An Unsupervised Evaluation Approach*](bibliografia/A/ampliatoria/Beyene-Dancy_2025_Layout-Aware-OCR-Black-Archives.pdf) [`ES`](bibliografia/A/ampliatoria/Beyene-Dancy_2025_Layout-Aware-OCR-Black-Archives_ES.pdf). Preprint, arXiv.
+- Prescott, A. (2018). [*Searching for Dr. Johnson: The Digitisation of the Burney Newspaper Collection*](bibliografia/A/ampliatoria/Prescott_2018_Searching-for-Dr-Johnson.pdf) [`ES`](bibliografia/A/ampliatoria/Prescott_2018_Searching-for-Dr-Johnson_ES.pdf). En S. G. Brandtzæg, P. Goring y C. Watson (Eds.), *Travelling Chronicles: News and Newspapers from the Early Modern Period to the Eighteenth Century* (pp. 51–71). Brill.
+- Prescott, A. (2019). [*Slow Digitisation and the Battle of the Books*](bibliografia/A/ampliatoria/Prescott_2019_Slow-Digitisation-Battle-of-Books.pdf) [`ES`](bibliografia/A/ampliatoria/Prescott_2019_Slow-Digitisation-Battle-of-Books_ES.pdf). En C. E. Karkov (Ed.), *Slow Scholarship: Medieval Research and the Neoliberal University* (pp. 143–162). D. S. Brewer.
+- Hitchcock, T. (2013). [*Confronting the Digital: Or How Academic History Writing Lost the Plot*](bibliografia/A/ampliatoria/Hitchcock_2013_Confronting-the-Digital.pdf) [`ES`](bibliografia/A/ampliatoria/Hitchcock_2013_Confronting-the-Digital_ES.pdf). *Cultural and Social History, 10*(1), 9–23.
 
 ### B. OCR, errores y crítica de fuentes digitalizadas (Módulo 2)
 
