@@ -40,7 +40,9 @@ La variable `SELECCION`, al comienzo de cada cuaderno, define qué se procesa:
 | `"prensa"` | las seis páginas de prensa |
 | `"manuscritos"` | las cinco imágenes manuscritas (cartas, actas, diario) |
 | `"todas"` | las once imágenes |
-| `"propias"` | imágenes subidas por cada participante |
+| `"propias"` | imágenes o PDF de cada participante: en Colab se suben varios archivos o una carpeta completa; fuera de Colab se leen de `mis_imagenes/` |
+
+Cada página de un PDF se convierte en una imagen PNG (`DPI_PDF = 200`) antes de procesarla.
 
 No subir a Colab material sensible o con restricciones de uso.
 
@@ -63,9 +65,9 @@ Los cuadernos funcionan también en una computadora propia; en ese caso no insta
 
 | Cuaderno | Paquetes |
 | --- | --- |
-| 01 | `doclayout-yolo==0.0.4 huggingface_hub pandas matplotlib` |
-| 02 y 03 | `paddlepaddle==3.2.1` (o `paddlepaddle-gpu==3.2.1`) y `paddleocr[doc-parser]==3.7.0 pandas matplotlib` |
-| 04 | `glmocr[selfhosted]==0.1.5 pandas matplotlib`, y Ollama con el modelo `glm-ocr` |
+| 01 | `doclayout-yolo==0.0.4 huggingface_hub pandas matplotlib pypdfium2` |
+| 02 y 03 | `paddlepaddle==3.2.1` (o `paddlepaddle-gpu==3.2.1`) y `paddleocr[doc-parser]==3.7.0 pandas matplotlib pypdfium2` |
+| 04 | `glmocr[selfhosted]==0.1.5 pandas matplotlib pypdfium2`, y Ollama con el modelo `glm-ocr` |
 
 `paddlepaddle` 3.3.x falla en CPU con PP-StructureV3; usar 3.2.1. Sin GPU, el cuaderno 03 puede tardar decenas de minutos por página.
 
