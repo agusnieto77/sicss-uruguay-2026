@@ -35,3 +35,11 @@ datos_catmus/
 # PortADa ground truth: local only.
 datos_portada/
 datos_ranking_final/
+
+# Class decks: publish only the public build (no speaker notes) and its PDF.
+slides/layout/*
+!slides/layout/index.html
+!slides/layout/layout.pdf
+slides/ocr-fuentes/*
+!slides/ocr-fuentes/index.html
+!slides/ocr-fuentes/ocr-fuentes.pdf

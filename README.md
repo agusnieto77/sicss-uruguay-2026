@@ -9,7 +9,7 @@
 **Horarios:** 10-13 h | 14-16 h.  
 **Sede:** UdelaR.
 
-> Transformar una fuente histórica en datos procesables no es una operación neutral. La identificación de regiones de una página, su transcripción y su posterior consulta mediante modelos de IA implican decisiones sobre la unidad documental, la materialidad de las fuentes, su fidelidad y su interpretación.
+> Identificar las regiones de una página, transcribirlas y consultarlas mediante modelos de IA implica decisiones sobre la unidad documental, la materialidad de las fuentes, su fidelidad y su interpretación.
 
 ## Presentación
 
@@ -47,11 +47,9 @@ Conocer, aplicar y evaluar críticamente procedimientos de segmentación, transc
 
 ### Módulo 1. Layout: estructura y organización de los documentos
 
-**Presentación de la clase:** [Layout: estructura de la página](slides/layout/index.html) · [PDF](slides/layout/qa/presentation.pdf). Son 42 diapositivas con conceptos, ejemplos de prensa y criterios de evaluación. La práctica se trabaja por separado en el [cuaderno 01: DocLayout-YOLO](cuadernos/01_DocLayout_YOLO_segmentacion.ipynb).
+**Presentación:** [Layout: estructura de la página](slides/layout/index.html) · [PDF](slides/layout/layout.pdf). 49 diapositivas con conceptos, ejemplos de prensa y criterios de evaluación. La práctica se trabaja en el [cuaderno 01: DocLayout-YOLO](cuadernos/01_DocLayout_YOLO_segmentacion.ipynb).
 
-**Uso de la presentación:**
-- **← / →:** navegar. **S:** abrir la ventana del presentador, con notas y navegación sincronizada con la proyección. Para esta función, servir el proyecto desde su carpeta raíz con `python3 -m http.server 8000 --bind 127.0.0.1` y abrir [la presentación local](http://127.0.0.1:8000/slides/layout/index.html); permitir la ventana emergente si el navegador la bloquea.
-- **Clic en una imagen:** ampliar; **Esc** o **×:** cerrar. **Ctrl+P:** imprimir o guardar como PDF; la imagen ampliada queda excluida de la impresión aunque esté abierta.
+**Uso de las presentaciones:** **← / →** para avanzar y retroceder, **F** para pantalla completa y **O** para ver todas las diapositivas. En la de layout, un clic sobre una imagen la amplía; **Esc** la cierra.
 
 **Preguntas orientadoras:** ¿qué constituye una noticia o una unidad documental en una página? ¿Qué información se pierde al separar un artículo de su ubicación y relaciones visuales? ¿Cómo afectan los errores de detección a la construcción de un corpus?
 
@@ -62,6 +60,8 @@ Conocer, aplicar y evaluar críticamente procedimientos de segmentación, transc
 **Producto:** una página anotada, una carpeta de recortes y una ficha breve de errores y decisiones de segmentación.
 
 ### Módulo 2. OCR: reconocimiento de texto y control de errores
+
+**Presentación:** [El OCR en la investigación histórica](slides/ocr-fuentes/index.html) · [PDF](slides/ocr-fuentes/ocr-fuentes.pdf). 43 diapositivas en tres bloques: el OCR como problema historiográfico; modelos y métricas, incluidas las medidas de fidelidad y de alucinación; y el proyecto PortADa con las pruebas de 12 modelos. La última diapositiva reúne enlaces para probar sistemas de OCR.
 
 **Preguntas orientadoras:** ¿cuándo una transcripción es suficientemente fiel? ¿Por qué una salida fluida puede ser incorrecta? ¿Qué sucede cuando el OCR confunde columnas, nombres, cifras o anuncios?
 
@@ -96,7 +96,7 @@ Conocer, aplicar y evaluar críticamente procedimientos de segmentación, transc
 ## Requisitos técnicos y preparación previa
 
 - **Computadora portátil** con permisos para instalar aplicaciones y espacio disponible para una muestra documental.
-- **EntropIA Lite instalada antes de comenzar.** En **Windows**, se recomienda Microsoft Store. Para **macOS o Linux**, comprobar primero la disponibilidad de instaladores compatibles en los lanzamientos oficiales de GitHub. Consultar la [página de EntropIA en HLab](https://hlab.com.ar/herramientas/entropia-lite) y sus enlaces de descarga. **No se presupone compatibilidad universal de Lite con todos los sistemas.**
+- **EntropIA Lite instalada antes de comenzar.** En **Windows**, se recomienda Microsoft Store. Para **macOS o Linux**, comprobar primero la disponibilidad de instaladores compatibles en los lanzamientos oficiales de GitHub. Consultar la [página de EntropIA en HLab](https://hlab.com.ar/herramientas/entropia-lite) y sus enlaces de descarga. **No está garantizado que Lite funcione en todos los sistemas operativos.**
 - **Conexión estable a Internet**, necesaria para Google Colab y las funciones remotas de EntropIA Lite.
 - **Cuenta de Google (Gmail)** para acceder a [Google Colab](https://colab.research.google.com/). Se recomienda iniciar sesión y comprobar que puede crearse un notebook.
 - **Navegador actualizado**, preferentemente Chrome o Firefox.
@@ -140,7 +140,7 @@ Las 151 imágenes que se usaron para evaluar los sistemas de OCR, agrupadas en s
 
 ## Modalidad de trabajo y evaluación formativa
 
-Cada jornada alterna exposición breve, discusión bibliográfica, demostración y experimentación en grupos o de manera individual. No se presupone experiencia previa en programación. El trabajo se centrará en **comparar resultados y justificar decisiones**, no solamente en conseguir que los modelos se ejecuten.
+Cada jornada alterna exposición breve, discusión bibliográfica, demostración y experimentación en grupos o de manera individual. No se presupone experiencia previa en programación. El trabajo se centra en **comparar resultados y justificar decisiones**.
 
 La evaluación formativa se basará en los cuatro productos de taller y en el informe integrador. Se valorará la identificación de errores, la conservación del vínculo con el documento original, la claridad de los criterios y la capacidad de explicar los límites de los resultados.
 
@@ -236,7 +236,7 @@ Las copias de lectura de estos textos se encuentran en la carpeta [`bibliografia
 
 ## Resultado esperado
 
-Al finalizar, cada participante habrá experimentado el pasaje **imagen original → regiones de layout → transcripción OCR → colección documental → consulta y análisis asistidos**, con registros de los errores, decisiones y límites de cada etapa. La meta no es automatizar la interpretación histórica, sino ampliar las posibilidades de investigación sin renunciar a la crítica de fuentes.
+Al finalizar, cada participante habrá recorrido el pasaje **imagen original → regiones de layout → transcripción OCR → colección documental → consulta y análisis asistidos**, con registros de los errores, decisiones y límites de cada etapa.
 
 ---
 
