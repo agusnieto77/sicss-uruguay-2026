@@ -132,6 +132,12 @@ El cuaderno `10_OCR_comparacion.ipynb` reúne los tres anteriores: pasa los quin
 
 Los cuadernos 01 a 04 se probaron en Google Colab con GPU T4; los 05 a 10 todavía no. Son materiales experimentales: los resultados varían según la página, y la instalación de los cuadernos 02, 03 y 07 a 10 tarda entre nueve y veinticinco minutos, por lo que conviene ejecutarla antes de cada jornada.
 
+## Banco de imágenes
+
+Las 151 imágenes que se usaron para evaluar los sistemas de OCR, agrupadas en seis conjuntos: mecanografiados del archivo Berrutti, tres sets de manuscritos españoles (siglos XV a XIX), impresos a una columna y prensa marítima de PortADa. Cada conjunto indica su fuente y su licencia.
+
+[Abrir el banco de imágenes](banco_imagenes/)
+
 ## Modalidad de trabajo y evaluación formativa
 
 Cada jornada alterna exposición breve, discusión bibliográfica, demostración y experimentación en grupos o de manera individual. No se presupone experiencia previa en programación. El trabajo se centrará en **comparar resultados y justificar decisiones**, no solamente en conseguir que los modelos se ejecuten.
