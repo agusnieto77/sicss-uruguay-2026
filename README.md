@@ -113,14 +113,22 @@ El docente facilitará una **muestra común de páginas de prensa histórica mul
 
 ## Notebooks y recursos prácticos
 
-El paquete de ejercicios está en la carpeta [`cuadernos/`](cuadernos/README.md). Los cuatro notebooks se abren directamente en Google Colab, instalan lo que necesitan y trabajan sobre una misma página común de prensa multicolumna (*Centro Gallego*, Montevideo, 1917), con la opción de procesar también otras páginas de prensa, cartas, actas y un diario manuscrito de dominio público:
+El paquete de ejercicios está en la carpeta [`cuadernos/`](cuadernos/README.md). Los nueve notebooks se abren directamente en Google Colab e instalan lo que necesitan. Los seis primeros trabajan sobre una misma página común de prensa multicolumna (*Centro Gallego*, Montevideo, 1917), con la opción de procesar también otras páginas de prensa, cartas, actas y un diario manuscrito de dominio público:
 
-1. `01_DocLayout_YOLO_segmentacion.ipynb`: detección de layout, imagen anotada, recortes y tabla de regiones.
-2. `02_PP_StructureV3_layout_OCR.ipynb`: layout, orden de lectura y OCR estructurado con visualizaciones y texto.
-3. `03_PaddleOCR_VL_layout_OCR.ipynb`: reconocimiento multimodal con salida visual y textual.
-4. `04_GLM_OCR_pipeline.ipynb`: pipeline completo de GLM-OCR (layout PP-DocLayoutV3 y reconocimiento GLM-OCR servido con Ollama).
+- `01_DocLayout_YOLO_segmentacion.ipynb`: detección de layout, imagen anotada, recortes y tabla de regiones.
+- `02_PP_StructureV3_layout_OCR.ipynb`: layout, orden de lectura y OCR estructurado con visualizaciones y texto.
+- `03_PaddleOCR_VL_layout_OCR.ipynb`: reconocimiento multimodal con salida visual y textual.
+- `04_GLM_OCR_pipeline.ipynb`: pipeline completo de GLM-OCR (layout PP-DocLayoutV3 y reconocimiento GLM-OCR servido con Ollama).
+- `05_Pipeline_modular_articulos.ipynb`: reconstrucción de artículos con bloques, filetes, orden de lectura y agrupación por títulos.
+- `06_Orden_lectura_LLM.ipynb`: orden de lectura guiado por un modelo de lenguaje que decide qué bloque sigue a cuál.
 
-Los cuatro se probaron en Google Colab con GPU T4. Aun así son materiales experimentales: los resultados varían según la página, y la instalación de los cuadernos 02 y 03 tarda alrededor de nueve minutos, por lo que conviene ejecutarla antes de cada jornada.
+Los tres siguientes comparan, sobre páginas con transcripción humana, dos OCR clásicos (docTR y Tesseract) con tres modelos abiertos de visión y lenguaje, y miden CER y WER:
+
+- `07_OCR_imprenta.ipynb`: impresos a una columna del siglo XIX (Churro-3B, Qwen3-VL-8B y LightOnOCR-3-4B).
+- `08_OCR_mecanografiado.ipynb`: párrafos mecanografiados del archivo Berrutti (LightOnOCR-3-4B, Qwen3-VL-8B y Chandra OCR 2).
+- `09_OCR_manuscritos.ipynb`: manuscritos españoles de la Edad Media al siglo XVIII (Churro-3B, LightOnOCR-3-4B y Chandra OCR 2).
+
+Los cuadernos 01 a 04 se probaron en Google Colab con GPU T4; los 05 a 09 todavía no. Son materiales experimentales: los resultados varían según la página, y la instalación de los cuadernos 02, 03 y 07 a 09 tarda entre nueve y quince minutos, por lo que conviene ejecutarla antes de cada jornada.
 
 ## Modalidad de trabajo y evaluación formativa
 

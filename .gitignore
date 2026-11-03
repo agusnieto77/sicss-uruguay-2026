@@ -22,3 +22,16 @@ descargar_hojas_corte_electoral.py
 # Talk sources and presenter build carry speaker notes: publish only the public index.html.
 slides/ia-fuentes-historicas/*
 !slides/ia-fuentes-historicas/index.html
+
+# Berrutti OCR dataset (CC BY-NC-SA 4.0) and derived evaluation set: local only.
+datos_berrutti/
+
+# CHURRO dataset (research use only): local only.
+datos_churro/
+
+# McCATMuS (CC-BY 4.0): local only.
+datos_catmus/
+
+# PortADa ground truth: local only.
+datos_portada/
+datos_ranking_final/
