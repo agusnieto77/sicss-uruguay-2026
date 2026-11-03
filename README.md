@@ -113,7 +113,7 @@ El docente facilitará una **muestra común de páginas de prensa histórica mul
 
 ## Notebooks y recursos prácticos
 
-El paquete de ejercicios está en la carpeta [`cuadernos/`](cuadernos/README.md). Los nueve notebooks se abren directamente en Google Colab e instalan lo que necesitan. Los seis primeros trabajan sobre una misma página común de prensa multicolumna (*Centro Gallego*, Montevideo, 1917), con la opción de procesar también otras páginas de prensa, cartas, actas y un diario manuscrito de dominio público:
+El paquete de ejercicios está en la carpeta [`cuadernos/`](cuadernos/README.md). Los diez notebooks se abren directamente en Google Colab e instalan lo que necesitan. Los seis primeros trabajan sobre una misma página común de prensa multicolumna (*Centro Gallego*, Montevideo, 1917), con la opción de procesar también otras páginas de prensa, cartas, actas y un diario manuscrito de dominio público:
 
 - `01_DocLayout_YOLO_segmentacion.ipynb`: detección de layout, imagen anotada, recortes y tabla de regiones.
 - `02_PP_StructureV3_layout_OCR.ipynb`: layout, orden de lectura y OCR estructurado con visualizaciones y texto.
@@ -128,7 +128,9 @@ Los tres siguientes comparan, sobre páginas con transcripción humana, dos OCR 
 - `08_OCR_mecanografiado.ipynb`: párrafos mecanografiados del archivo Berrutti (LightOnOCR-3-4B, Qwen3-VL-8B y Chandra OCR 2).
 - `09_OCR_manuscritos.ipynb`: manuscritos españoles de la Edad Media al siglo XVIII (Churro-3B, LightOnOCR-3-4B y Chandra OCR 2).
 
-Los cuadernos 01 a 04 se probaron en Google Colab con GPU T4; los 05 a 09 todavía no. Son materiales experimentales: los resultados varían según la página, y la instalación de los cuadernos 02, 03 y 07 a 09 tarda entre nueve y quince minutos, por lo que conviene ejecutarla antes de cada jornada.
+El cuaderno `10_OCR_comparacion.ipynb` reúne los tres anteriores: pasa los quince documentos por los seis sistemas y descarga cada modelo una sola vez.
+
+Los cuadernos 01 a 04 se probaron en Google Colab con GPU T4; los 05 a 10 todavía no. Son materiales experimentales: los resultados varían según la página, y la instalación de los cuadernos 02, 03 y 07 a 10 tarda entre nueve y veinticinco minutos, por lo que conviene ejecutarla antes de cada jornada.
 
 ## Modalidad de trabajo y evaluación formativa
 
