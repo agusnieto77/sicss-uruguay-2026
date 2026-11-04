@@ -83,6 +83,8 @@ Conocer, aplicar y evaluar críticamente procedimientos de segmentación, transc
 
 **Producto:** colección funcional con documentos procesados y una ficha de crítica de la herramienta que distinga usabilidad de decisiones epistemológicas.
 
+**Presentación:** [Layout y OCR en EntropIA Lite](slides/entropia-lite/index.html) · [PDF](slides/entropia-lite/entropia-lite.pdf). 38 diapositivas en cuatro bloques: las herramientas como instrumentos científicos; la cadena archivo → imagen → texto → corpus dentro de EntropIA Lite; procedencia y trazabilidad; y crear herramientas como forma de hacer ciencia.
+
 ### Módulo 4. RAG y agentes en EntropIA Lite
 
 **Preguntas orientadoras:** ¿qué diferencia hay entre hallar un documento y generar una respuesta sobre él? ¿Qué significa que una respuesta esté fundamentada? ¿Qué decisiones debe validar el investigador?

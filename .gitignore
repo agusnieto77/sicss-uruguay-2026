@@ -43,3 +43,6 @@ slides/layout/*
 slides/ocr-fuentes/*
 !slides/ocr-fuentes/index.html
 !slides/ocr-fuentes/ocr-fuentes.pdf
+slides/entropia-lite/*
+!slides/entropia-lite/index.html
+!slides/entropia-lite/entropia-lite.pdf
