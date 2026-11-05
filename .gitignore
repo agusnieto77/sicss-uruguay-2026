@@ -46,3 +46,6 @@ slides/ocr-fuentes/*
 slides/entropia-lite/*
 !slides/entropia-lite/index.html
 !slides/entropia-lite/entropia-lite.pdf
+slides/rag-agentes/*
+!slides/rag-agentes/index.html
+!slides/rag-agentes/rag-agentes.pdf

@@ -95,6 +95,8 @@ Conocer, aplicar y evaluar críticamente procedimientos de segmentación, transc
 
 **Producto final integrador:** breve informe que documente una fuente original, su segmentación y transcripción, su incorporación a EntropIA y una consulta fundamentada sobre el corpus, junto con sus limitaciones.
 
+**Presentación:** [RAG y agentes en EntropIA Lite](slides/rag-agentes/index.html) · [PDF](slides/rag-agentes/rag-agentes.pdf). 41 diapositivas en seis bloques: encontrar documentos; cómo funciona un RAG; cómo busca y recupera EntropIA Lite; RAG sobre prensa histórica; citas y verificación; y agentes. Cierra con un protocolo de verificación y la consigna para la práctica.
+
 ## Requisitos técnicos y preparación previa
 
 - **Computadora portátil** con permisos para instalar aplicaciones y espacio disponible para una muestra documental.
